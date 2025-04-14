@@ -1,12 +1,13 @@
+import { notifyError } from "../toast/toast";
+
 export function requestExceptionHandler(exception) {
   const { response: resp } = exception;
   if (resp?.status == 422) {
-    resp?.data?.message?.forEach((error) => {
-      console.log(error);
-      //   toaster(error, "error");
+    resp?.data?.data?.errors?.forEach((error) => {
+      notifyError(error);
     });
   } else {
-    // toaster("Something went to wrong", "error");
+    notifyError();
     console.error(exception.message);
   }
 }

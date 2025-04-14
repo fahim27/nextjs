@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+
+
+// header("Access-Control-Allow-Origin: *");
 
 // Route::get('/product/index', [ProductController::class, 'index'])->name('product.index');
 // Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
@@ -27,13 +31,6 @@ Route::get('posts', function () {
         'posts'  => \App\Models\Post::get()
     ]);
 });
-Route::post('api/user_register', function () {
-    return response()->json([
-        'success' => true,
-        'posts'  => \App\Models\Post::get()
-    ]);
-});
-
 
 Route::get('/', function () {
     return to_route('product.index');

@@ -1,10 +1,11 @@
 import { API_ENDPOINT } from "@/lib/constants/endpoints";
-import { makeFormDataFromObject } from "@/lib/helper/helper";
+import { makeFormDataFromObject, requestExceptionHandler } from "@/lib/helper/helper";
+import { notifyError, notifySuccess } from "@/lib/toast/toast";
 import apiClient from "@/services/api/apiClient";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-export default function useUserRegisterFormFormik() {
+export default function useUserRegisterHook() {
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -19,10 +20,15 @@ export default function useUserRegisterFormFormik() {
         onSubmit: async (values) => {
             const formData = makeFormDataFromObject(values)
             try {
-                const resp = await apiClient.post(API_ENDPOINT.user_register, formData);
-                console.log("this is response", resp);
+                const response = await apiClient.post(API_ENDPOINT.user_register, formData);
+                if (response?.data?.success) {
+                    notifySuccess(response?.data?.message)
+                    formik.resetForm()  
+                }else{
+                    notifyError(response?.data?.message)
+                }
             } catch (e) {
-                requestExceptionMessage(e)
+                requestExceptionHandler(e)
             }
         },
     })
