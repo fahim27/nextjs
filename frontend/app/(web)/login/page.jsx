@@ -1,9 +1,24 @@
-import React from 'react'
+import LoginForm from "@/components/web/user/login/LoginForm";
 
-export default function Login() {
+export default function Page() {
     return (
-        <section className='p-5'>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores modi aperiam recusandae tenetur sint porro consequatur illum placeat cumque fugit, minus repellat natus harum quam voluptates quisquam ullam facere est assumenda ipsa necessitatibus distinctio fugiat aspernatur asperiores. Aspernatur, amet corporis deleniti, veniam impedit culpa distinctio ea, molestias porro laborum ab perferendis debitis recusandae omnis asperiores. Doloremque quasi debitis quod, repudiandae veniam minus ratione non quos quidem totam facilis harum eligendi impedit et quam culpa aliquid? Placeat, harum consequatur quis quisquam adipisci obcaecati numquam aliquam nulla assumenda cumque, distinctio ut exercitationem atque necessitatibus ipsa possimus nobis est delectus! Culpa, repudiandae provident repellat odio hic obcaecati, libero deleniti perspiciatis porro nesciunt quo quibusdam explicabo aspernatur earum eveniet aliquam optio consectetur quas. Earum et ipsam, recusandae commodi cumque mollitia quod reprehenderit amet voluptatibus? Facilis temporibus, dolores quibusdam aliquid deleniti, provident sed impedit officia ad aliquam hic. Temporibus sed impedit velit dolorem repellat ipsam a quia repudiandae incidunt modi optio, eos aspernatur autem assumenda sint debitis perspiciatis aperiam voluptate. Libero officiis soluta, consequuntur eligendi tempore corporis laborum omnis accusantium ullam iusto eveniet eius quisquam quaerat? Deleniti nihil rem iste in asperiores aperiam tempore quibusdam voluptates fugit! Libero voluptates magnam qui ipsum nulla. Eius quae facilis repudiandae molestias doloremque ipsa dicta, facere nam! Rerum dolor obcaecati natus optio cumque! Inventore placeat et quasi voluptates numquam beatae totam! Minus commodi maiores alias iusto, modi quod consequatur doloribus amet officia nihil laudantium totam ab similique tempora cupiditate, quam vero libero sunt. Neque repellendus iure molestiae eligendi incidunt?</p>
+        <section className="py-5">
+            <div className="container">
+                <h1 className="text-2xl font-bold mb-4">Login</h1>
+                <div className="my-5">
+                    <hr />
+                    <hr />
+                </div>
+                <div className="row gy-4 justify-content-center">
+                    <div className="col-lg-6">
+                        <div className="card">
+                            <div className="card-body">
+                                <LoginForm />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     )
 }

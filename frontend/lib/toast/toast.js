@@ -5,10 +5,8 @@ export const notifySuccess = (message) => {
 };
 
 export const notifyError = (message = null) => {
-    if (!$message) {
-        message = "Something went wrong!";
-    }
-    toast.error(message);
+    
+    toast.success("Something went wrong!");
 };
 
 export const notifyInfo = (message) => {

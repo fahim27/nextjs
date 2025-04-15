@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function dashboard()
+    {
+        return response()->json([
+            'success' => true,
+            'data'    => [
+                'user'  => auth()->user()
+            ]
+        ]);
+    }
     public function register(Request $request)
     {
         $request->validate([
@@ -22,9 +31,14 @@ class UserController extends Controller
             'email'    => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
         return response()->json([
             'success' => true,
             'message' => 'User registered successfully',
+            'data'    => [
+                'token' => $user->createToken('auth_token')->plainTextToken,
+                'user'  => $user
+            ]
         ]);
     }
 
@@ -35,7 +49,9 @@ class UserController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
+        $attempt = auth()->attempt(['email' => $request->email, 'password' => $request->password]);
+
+        if (!$attempt) {
             return response()->json([
                 'success' => false,
                 'message' => 'Invalid credentials',
@@ -43,6 +59,7 @@ class UserController extends Controller
         }
 
         $user = auth()->user();
+
         return response()->json([
             'success' => true,
             'message' => 'Login successful',

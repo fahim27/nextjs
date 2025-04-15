@@ -32,6 +32,14 @@ Route::get('posts', function () {
     ]);
 });
 
+Route::get('/login', function () {
+    return response()->json([
+        'success' => true,
+        'message' => "Login Required",
+    ], 401);
+})->name('login');
+
+
 Route::get('/', function () {
     return to_route('product.index');
 });
